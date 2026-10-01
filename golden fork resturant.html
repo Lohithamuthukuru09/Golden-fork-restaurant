@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Golden Fork — Restaurant & Café</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700;900&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --gold:#c9a227; --dark:#1a1a1a; --cream:#faf6ef; --green:#2e4b3f;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'Poppins',sans-serif;color:var(--dark);background:var(--cream);scroll-behavior:smooth;}
+h1,h2,h3{font-family:'Playfair Display',serif;}
+
+/* NAVBAR */
+nav{position:fixed;top:0;width:100%;display:flex;justify-content:space-between;align-items:center;
+  padding:16px 6%;background:rgba(26,26,26,.92);backdrop-filter:blur(8px);z-index:100;}
+.logo{color:var(--gold);font-family:'Playfair Display',serif;font-size:1.5rem;font-weight:700;letter-spacing:1px;}
+.logo span{color:#fff;}
+nav ul{display:flex;gap:28px;list-style:none;}
+nav a{color:#eee;text-decoration:none;font-size:.92rem;transition:.3s;}
+nav a:hover{color:var(--gold);}
+.burger{display:none;color:#fff;font-size:1.6rem;cursor:pointer;background:none;border:none;}
+
+/* HERO */
+.hero{height:100vh;background:linear-gradient(rgba(0,0,0,.55),rgba(0,0,0,.55)),
+ url('https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1600&q=80') center/cover;
+ display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;color:#fff;padding:0 20px;}
+.hero h1{font-size:clamp(2.4rem,6vw,4.2rem);margin-bottom:14px;}
+.hero p{font-size:1.1rem;font-weight:300;letter-spacing:2px;margin-bottom:30px;}
+.btn{display:inline-block;padding:14px 36px;border-radius:40px;text-decoration:none;font-weight:500;transition:.3s;}
+.btn-gold{background:var(--gold);color:var(--dark);}
+.btn-gold:hover{background:#e0b935;transform:translateY(-2px);}
+.btn-outline{border:2px solid #fff;color:#fff;margin-left:12px;}
+.btn-outline:hover{background:#fff;color:var(--dark);}
+
+/* SECTIONS */
+section{padding:80px 6%;}
+.sec-title{text-align:center;font-size:2.3rem;margin-bottom:8px;}
+.sec-sub{text-align:center;color:#777;margin-bottom:50px;font-weight:300;}
+
+/* ABOUT */
+.about{display:flex;gap:50px;align-items:center;flex-wrap:wrap;}
+.about img{flex:1;min-width:280px;width:100%;max-width:520px;border-radius:14px;box-shadow:0 15px 40px rgba(0,0,0,.15);}
+.about-text{flex:1;min-width:280px;}
+.about-text h3{font-size:1.7rem;margin-bottom:16px;color:var(--green);}
+.about-text p{color:#555;line-height:1.8;margin-bottom:14px;}
+
+/* FRUIT PROMISE BANNER */
+.fruit-banner{background:linear-gradient(135deg,#2e4b3f,#3d6b58);color:#fff;display:flex;align-items:center;gap:26px;
+ flex-wrap:wrap;justify-content:center;padding:34px 8%;text-align:center;}
+.fruit-banner .fruit-icon{font-size:3rem;animation:bob 2.5s ease-in-out infinite;}
+@keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+.fruit-banner h3{font-family:'Playfair Display';font-size:1.5rem;margin-bottom:6px;color:#ffe9a8;}
+.fruit-banner p{color:#d9e8e0;font-weight:300;max-width:640px;line-height:1.7;}
+.fruit-badge{background:var(--gold);color:var(--dark);padding:8px 20px;border-radius:30px;font-weight:600;font-size:.85rem;letter-spacing:.5px;}
+
+/* MENU */
+.menu-section{background:var(--dark);color:#eee;}
+.menu-section .sec-sub{color:#aaa;}
+.tabs{display:flex;justify-content:center;gap:10px;flex-wrap:wrap;margin-bottom:40px;}
+.tab{padding:10px 26px;border:1px solid var(--gold);background:transparent;color:var(--gold);border-radius:30px;cursor:pointer;font-family:'Poppins';transition:.3s;}
+.tab.active,.tab:hover{background:var(--gold);color:var(--dark);}
+.menu-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:26px;max-width:1100px;margin:0 auto;}
+.menu-card{background:#242424;border-radius:12px;padding:22px;border:1px solid #333;transition:.3s;}
+.menu-card:hover{transform:translateY(-5px);border-color:var(--gold);}
+.menu-card h4{font-family:'Playfair Display';font-size:1.15rem;display:flex;justify-content:space-between;margin-bottom:8px;}
+.menu-card h4 .price{color:var(--gold);}
+.menu-card p{color:#999;font-size:.9rem;line-height:1.6;}
+
+/* GALLERY */
+.gallery-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px;max-width:1100px;margin:0 auto;}
+.gallery-grid img{width:100%;height:220px;object-fit:cover;border-radius:12px;transition:.4s;cursor:pointer;}
+.gallery-grid img:hover{transform:scale(1.04);}
+
+/* BOOKING */
+.booking{background:var(--green);color:#fff;}
+.booking .sec-sub{color:#cfe0d8;}
+form{max-width:620px;margin:0 auto;background:#fff;padding:36px;border-radius:16px;color:var(--dark);display:grid;gap:16px;box-shadow:0 20px 50px rgba(0,0,0,.25);}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+label{font-size:.85rem;font-weight:500;margin-bottom:5px;display:block;color:var(--green);}
+input,select,textarea{width:100%;padding:12px;border:1px solid #ddd;border-radius:8px;font-family:'Poppins';font-size:.92rem;}
+input:focus,select:focus,textarea:focus{outline:none;border-color:var(--gold);}
+form .btn{border:none;cursor:pointer;font-size:1rem;justify-self:center;}
+.confirm{display:none;text-align:center;padding:10px;}
+.confirm h3{color:var(--green);margin-bottom:10px;}
+.confirm p{color:#555;}
+
+/* LOCATION */
+.location{display:flex;gap:40px;flex-wrap:wrap;justify-content:center;}
+.map{flex:1;min-width:280px;max-width:560px;border-radius:14px;overflow:hidden;box-shadow:0 12px 35px rgba(0,0,0,.12);}
+.map iframe{width:100%;height:320px;border:0;}
+.info{flex:1;min-width:280px;max-width:480px;}
+.info h3{font-size:1.5rem;margin-bottom:18px;color:var(--green);}
+.info p{margin-bottom:14px;color:#555;display:flex;gap:10px;align-items:center;}
+.info .icon{color:var(--gold);font-size:1.2rem;}
+.hours{margin-top:20px;background:#fff;padding:18px;border-radius:10px;box-shadow:0 6px 18px rgba(0,0,0,.07);}
+.hours div{display:flex;justify-content:space-between;padding:6px 0;color:#555;font-size:.92rem;border-bottom:1px dashed #eee;}
+.hours div:last-child{border:none;}
+
+/* FOOTER */
+footer{background:var(--dark);color:#bbb;text-align:center;padding:34px 6%;}
+footer .logo{margin-bottom:10px;}
+footer p{font-size:.85rem;}
+footer a{color:var(--gold);text-decoration:none;margin:0 8px;}
+
+@media(max-width:760px){
+  nav ul{position:fixed;top:60px;right:-100%;flex-direction:column;background:var(--dark);width:200px;height:100vh;padding:30px;transition:.4s;}
+  nav ul.open{right:0;}
+  .burger{display:block;}
+  .row{grid-template-columns:1fr;}
+}
+</style>
+<base target="_blank">
+</head>
+<body>
+
+<nav>
+  <div class="logo">The Golden <span>Fork</span></div>
+  <ul id="navLinks">
+    <li><a href="#home">Home</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#menu">Menu</a></li>
+    <li><a href="#fruit-promise">Fruit Promise</a></li>
+    <li><a href="#gallery">Gallery</a></li>
+    <li><a href="#booking">Book a Table</a></li>
+    <li><a href="#location">Location</a></li>
+  </ul>
+  <button class="burger" onclick="document.getElementById('navLinks').classList.toggle('open')">☰</button>
+</nav>
+
+<header class="hero" id="home">
+  <h1>The Golden Fork</h1>
+  <p>FINE DINING &nbsp;•&nbsp; COZY CAFÉ &nbsp;•&nbsp; SINCE 2010</p>
+  <div>
+    <a href="#menu" class="btn btn-gold">View Menu</a>
+    <a href="#booking" class="btn btn-outline">Book a Table</a>
+  </div>
+</header>
+
+<section id="about">
+  <div class="about">
+    <img src="https://images.unsplash.com/photo-1552566626-52f8b828add9?auto=format&fit=crop&w=900&q=80" alt="Restaurant interior">
+    <div class="about-text">
+      <h2 class="sec-title" style="text-align:left">Our Story</h2>
+      <h3>Crafted with love, served with warmth</h3>
+      <p>Founded in 2010, The Golden Fork began as a small family café with one dream — to bring people together over honest, delicious food.</p>
+      <p>Today, we're proud to serve handcrafted dishes made from fresh, locally-sourced ingredients, in a space that feels like home.</p>
+    </div>
+  </div>
+</section>
+
+
+<!-- FRUIT PROMISE -->
+<div class="fruit-banner" id="fruit-promise">
+  <div class="fruit-icon">🍎</div>
+  <div>
+    <h3>Our Fruit Promise 🌿</h3>
+    <p>At The Golden Fork, we care about your health beyond your meal. Every guest receives a <strong>fresh, seasonal fruit</strong> to take home while leaving — a small gift from our family to yours, because good health begins with small habits.</p>
+  </div>
+  <div class="fruit-badge">FREE WITH EVERY VISIT</div>
+</div>
+
+<section class="menu-section" id="menu">
+  <h2 class="sec-title">Our Menu</h2>
+  <p class="sec-sub">Fresh ingredients, bold flavors</p>
+  <div class="tabs">
+    <button class="tab active" onclick="filterMenu('all',this)">All</button>
+    <button class="tab" onclick="filterMenu('starters',this)">Starters</button>
+    <button class="tab" onclick="filterMenu('mains',this)">Mains</button>
+    <button class="tab" onclick="filterMenu('desserts',this)">Desserts</button>
+    <button class="tab" onclick="filterMenu('drinks',this)">Drinks</button>
+  </div>
+  <div class="menu-grid" id="menuGrid"></div>
+</section>
+
+<section id="gallery">
+  <h2 class="sec-title">Gallery</h2>
+  <p class="sec-sub">A peek inside our kitchen & café</p>
+  <div class="gallery-grid">
+    <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=600&q=80" alt="Dish">
+    <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=600&q=80" alt="Dining">
+    <img src="https://images.unsplash.com/photo-1461023058943-07fcbe16d735?auto=format&fit=crop&w=600&q=80" alt="Coffee">
+    <img src="https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?auto=format&fit=crop&w=600&q=80" alt="Salad">
+    <img src="https://images.unsplash.com/photo-1551218808-94e220e084d2?auto=format&fit=crop&w=600&q=80" alt="Plated food">
+    <img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&w=600&q=80" alt="Restaurant">
+  </div>
+</section>
+
+<section class="booking" id="booking">
+  <h2 class="sec-title" style="color:#fff">Book a Table</h2>
+  <p class="sec-sub">Reserve your spot — we'll handle the rest</p>
+  <form id="bookForm">
+    <div id="formFields" style="display:grid;gap:16px;">
+      <div class="row">
+        <div><label>Full Name</label><input type="text" id="name" required placeholder="John Doe"></div>
+        <div><label>Phone</label><input type="tel" id="phone" required placeholder="+91 98765 43210"></div>
+      </div>
+      <div class="row">
+        <div><label>Date</label><input type="date" id="date" required></div>
+        <div><label>Time</label>
+          <select id="time" required>
+            <option value="">Select time</option>
+            <option>12:00 PM</option><option>1:00 PM</option><option>2:00 PM</option>
+            <option>6:00 PM</option><option>7:00 PM</option><option>8:00 PM</option><option>9:00 PM</option>
+          </select>
+        </div>
+      </div>
+      <div class="row">
+        <div><label>Guests</label>
+          <select id="guests" required>
+            <option value="">Select</option><option>1</option><option>2</option><option>3</option>
+            <option>4</option><option>5</option><option>6+</option>
+          </select>
+        </div>
+        <div><label>Occasion (optional)</label>
+          <select id="occasion"><option value="">None</option><option>Birthday</option><option>Anniversary</option><option>Business</option></select>
+        </div>
+      </div>
+      <div><label>Special Requests</label><textarea rows="3" placeholder="Any dietary needs or requests..."></textarea></div>
+      <button type="submit" class="btn btn-gold">Confirm Reservation</button>
+    </div>
+    <div class="confirm" id="confirmMsg">
+      <h3>✅ Reservation Confirmed!</h3>
+      <p id="confirmText"></p>
+    </div>
+  </form>
+</section>
+
+<section id="location">
+  <h2 class="sec-title">Find Us</h2>
+  <p class="sec-sub">Come say hello</p>
+  <div class="location">
+    <div class="map">
+      <iframe src="https://www.google.com/maps?q=Mumbai%20Marine%20Drive&output=embed" loading="lazy"></iframe>
+    </div>
+    <div class="info">
+      <h3>Visit The Golden Fork</h3>
+      <p><span class="icon">📍</span> 12 Marine Drive, Mumbai, India</p>
+      <p><span class="icon">📞</span> +91 98765 43210</p>
+      <p><span class="icon">✉️</span> hello@goldenfork.com</p>
+      <div class="hours">
+        <div><span>Monday – Friday</span><span>12:00 PM – 10:30 PM</span></div>
+        <div><span>Saturday – Sunday</span><span>11:00 AM – 11:30 PM</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="logo">The Golden <span>Fork</span></div>
+  <p>Made with ❤️ &nbsp;|&nbsp; <a href="#home">Home</a> <a href="#menu">Menu</a> <a href="#booking">Book</a></p>
+  <p>© 2026 The Golden Fork. All rights reserved.</p>
+</footer>
+
+<script>
+const menuItems=[
+ {c:'starters',n:'Bruschetta Italiana',p:'₹220',d:'Grilled bread, fresh tomatoes, basil, olive oil.'},
+ {c:'starters',n:'Crispy Paneer Bites',p:'₹260',d:'Golden-fried paneer with mint yogurt dip.'},
+ {c:'starters',n:'Tomato Basil Soup',p:'₹180',d:'Slow-cooked tomatoes, cream swirl, croutons.'},
+ {c:'mains',n:'Wood-Fired Margherita Pizza',p:'₹420',d:'San Marzano tomatoes, mozzarella, fresh basil.'},
+ {c:'mains',n:'Butter Chicken',p:'₹380',d:'Tandoor-roasted chicken in creamy tomato gravy.'},
+ {c:'mains',n:'Grilled Salmon',p:'₹650',d:'Herb-crusted salmon, lemon butter, seasonal veggies.'},
+ {c:'mains',n:'Veg Alfredo Pasta',p:'₹340',d:'Fettuccine in creamy parmesan sauce with mushrooms.'},
+ {c:'desserts',n:'Classic Tiramisu',p:'₹280',d:'Espresso-soaked ladyfingers, mascarpone cream.'},
+ {c:'desserts',n:'Molten Chocolate Cake',p:'₹260',d:'Warm dark chocolate with a gooey center.'},
+ {c:'drinks',n:'Cappuccino',p:'₹140',d:'Double-shot espresso, velvety steamed milk.'},
+ {c:'drinks',n:'Virgin Mojito',p:'₹160',d:'Mint, lime, soda — ice cold and refreshing.'},
+ {c:'drinks',n:'Mango Smoothie',p:'₹180',d:'Fresh mango, yogurt, honey blend.'}
+];
+function renderMenu(cat){
+  const grid=document.getElementById('menuGrid');
+  grid.innerHTML=menuItems.filter(i=>cat==='all'||i.c===cat)
+    .map(i=>`<div class="menu-card"><h4>${i.n}<span class="price">${i.p}</span></h4><p>${i.d}</p></div>`).join('');
+}
+function filterMenu(cat,btn){
+  document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
+  btn.classList.add('active');renderMenu(cat);
+}
+renderMenu('all');
+
+document.getElementById('bookForm').addEventListener('submit',function(e){
+  e.preventDefault();
+  const name=document.getElementById('name').value;
+  const date=document.getElementById('date').value;
+  const time=document.getElementById('time').value;
+  const guests=document.getElementById('guests').value;
+  document.getElementById('formFields').style.display='none';
+  document.getElementById('confirmText').textContent=
+    `Thank you, ${name}! Your table for ${guests} on ${date} at ${time} is booked. See you soon!`;
+  document.getElementById('confirmMsg').style.display='block';
+});
+
+// close mobile menu on link click
+document.querySelectorAll('#navLinks a').forEach(a=>
+  a.addEventListener('click',()=>document.getElementById('navLinks').classList.remove('open')));
+</script>
+</body>
+</html>
